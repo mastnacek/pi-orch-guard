@@ -1,0 +1,55 @@
+{
+  "name": "pi-orch-guard",
+  "version": "0.1.0",
+  "description": "Guards an expensive orchestrator model: blocks every write, and puts a reason-and-target approval modal in front of every source read. Structural enforcement via a tool_call hook, not a prompt promise.",
+  "type": "module",
+  "main": "./index.ts",
+  "keywords": [
+    "pi",
+    "pi-extension",
+    "orchestrator",
+    "guard",
+    "agent-harness",
+    "lotusscript",
+    "human-in-the-loop"
+  ],
+  "author": "mastnacek",
+  "license": "MIT",
+  "files": [
+    "index.ts",
+    "src",
+    "test",
+    "skills",
+    "agents",
+    "README.md",
+    "LICENSE",
+    "package.json",
+    "tsconfig.json",
+    "tsconfig.test.json"
+  ],
+  "pi": {
+    "extensions": [
+      "./index.ts"
+    ],
+    "skills": [
+      "./skills/orchestrate"
+    ],
+    "subagents": {
+      "agents": [
+        "./agents"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-agent-core": "*",
+    "@earendil-works/pi-ai": "*",
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-tui": "*",
+    "typebox": "*"
+  },
+  "scripts": {
+    "build": "tsc",
+    "check": "tsc --noEmit",
+    "test": "tsc -p tsconfig.test.json && node --test dist/test/*.test.js"
+  }
+}
